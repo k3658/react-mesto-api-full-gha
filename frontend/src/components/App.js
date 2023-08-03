@@ -1,6 +1,6 @@
 import "../index.css";
 import React, { useState, useEffect } from "react";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import ProtectedRouteElement from "./ProtectedRoute";

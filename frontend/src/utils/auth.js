@@ -1,4 +1,4 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
+export const BASE_URL = "https://api.mestokk36.nomoreparties.co";
 
 const statusCheck = (res) => {
   if (res.ok) {
