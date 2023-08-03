@@ -10,6 +10,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
     : "place__delete_hidden";
 
   const isLiked = card.likes.some((i) => i === currentUser._id);
+  console.log(card);
   const cardLikeButtonClassName = `place__like ${
     isLiked && "place__like_active"
   }`;
