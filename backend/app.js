@@ -40,4 +40,6 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errProcessing);
 
-app.listen(SERVER_PORT);
+app.listen(SERVER_PORT, () => {
+  console.log(`App listening on port ${SERVER_PORT}`);
+});
