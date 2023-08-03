@@ -53,7 +53,7 @@ const deleteCard = (req, res, next) => {
     });
 };
 
-const updateCardData = (req, res, next, data, msg) => {
+const updateCardData = (req, res, next, data) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
     data,
@@ -63,7 +63,7 @@ const updateCardData = (req, res, next, data, msg) => {
       if (!card) {
         next(new NotFoundError(errorMessages.MESSAGE_ERROR_NOT_FOUND));
       } else {
-        res.send({ message: msg });
+        res.send(card);
       }
     })
     .catch((err) => {
@@ -83,7 +83,6 @@ const likeCard = (req, res, next) => {
     res,
     next,
     data,
-    'Карточка лайкнута.',
   );
 };
 
@@ -95,7 +94,6 @@ const dislikeCard = (req, res, next) => {
     res,
     next,
     data,
-    'Лайк у карточки убран.',
   );
 };
 

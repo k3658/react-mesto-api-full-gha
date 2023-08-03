@@ -1,5 +1,5 @@
 import logo from "../images/logo.svg";
-import { Route, Routes, Link, useLocation } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 function Header({ userEmail, onLogout }) {

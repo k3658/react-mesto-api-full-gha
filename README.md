@@ -5,12 +5,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/k3658/express-mesto-gha
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 84.252.131.41
 
-Frontend https://...
+Frontend https://mestokk36.nomoreparties.co
 
-Backend https://...
+Backend https://api.mestokk36.nomoreparties.co

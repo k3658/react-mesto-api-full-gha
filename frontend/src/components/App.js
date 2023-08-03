@@ -98,7 +98,7 @@ function App() {
     if (jwt) {
       auth
         .checkToken(jwt)
-        .then(({ data }) => {
+        .then((data) => {
           setLoggedIn(true);
           setUserEmail(data.email);
           navigate("/", { replace: true });
@@ -191,7 +191,7 @@ function App() {
 
   // CARD LIKES RELATED
   function handleToggleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
 
     if (!isLiked) {
       api
