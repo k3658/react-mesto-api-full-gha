@@ -23,8 +23,6 @@ app.use(express.json());
 
 app.use(requestLogger);
 
-app.use(corsMiddleware);
-
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -35,6 +33,8 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.use('/', rootRouter);
+
+app.use(corsMiddleware);
 
 app.use(errorLogger);
 app.use(errors());
