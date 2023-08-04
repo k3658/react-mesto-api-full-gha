@@ -32,9 +32,9 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-app.use('/', rootRouter);
-
 app.use(corsMiddleware);
+
+app.use('/', rootRouter);
 
 app.use(errorLogger);
 app.use(errors());

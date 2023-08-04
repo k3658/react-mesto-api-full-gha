@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 const { errorMessages } = require('../errors/errors');
 
+const { SECRET_KEY } = require('../env.config');
+
 const auth = (req, res, next) => {
   const { authorization } = req.headers;
 
@@ -14,7 +16,7 @@ const auth = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, 'some-secret-key');
+    payload = jwt.verify(token, SECRET_KEY);
   } catch (err) {
     throw new UnauthorizedError(errorMessages.MESSAGE_ERROR_UNAUTHORIZED);
   }
