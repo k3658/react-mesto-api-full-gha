@@ -1,17 +1,17 @@
 import logo from "../images/logo.svg";
 import { Route, Routes, Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 
 function Header({ userEmail, onLogout }) {
-  const navMobile = React.useRef();
-  const btnBurger = React.useRef();
+  const navMobile = useRef();
+  const btnBurger = useRef();
 
   function handleToggleMenu() {
     navMobile.current.classList.toggle("active");
     btnBurger.current.classList.toggle("checked");
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
   navMobile.current.classList.remove("active");
   }, [onLogout]);
 
