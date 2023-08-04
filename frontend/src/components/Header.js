@@ -3,25 +3,21 @@ import { Route, Routes, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 function Header({ userEmail, onLogout }) {
-  const [menuClass, setMenuClass] = useState("header__nav_mobile");
-  const [isMenuActive, setIsMenuActive] = useState(false);
+  const navMobile = React.useRef();
+  const btnBurger = React.useRef();
 
   function handleToggleMenu() {
-    if (!isMenuActive) {
-      setMenuClass("header__nav_mobile_active");
-    } else {
-      setMenuClass("header__nav_mobile");
-    }
-    setIsMenuActive(!isMenuActive);
+    navMobile.current.classList.toggle("active");
+    btnBurger.current.classList.toggle("checked");
   }
 
-  useEffect(() => {
-    setMenuClass("header__nav_mobile");
+  React.useEffect(() => {
+  navMobile.current.classList.remove("active");
   }, [onLogout]);
 
   return (
     <>
-      <nav className={menuClass}>
+      <nav className="header__nav_mobile" ref={navMobile}>
         <ul className="header__nav_menu">
           <li>
             <p className="header__nav_email">{userEmail}</p>
@@ -41,27 +37,37 @@ function Header({ userEmail, onLogout }) {
       <div className="header">
         <img className="header__logo" src={logo} alt="Логотип" />
 
-        <>
-          <nav className="header__nav_desktop">
-            <p className="header__email">{userEmail}</p>
-            <Link to="/sign-in" className="header__link" onClick={onLogout}>
-              Выйти
-            </Link>
-          </nav>
-          <label className="header__nav_button">
-            <input
-              className="header__nav_switcher"
-              type="checkbox"
-              onClick={handleToggleMenu}
-            />
-            <span className="header__nav_button_transition" />
-            <span className="header__nav_button_transition" />
-            <span className="header__nav_button_transition" />
-            <span className="header__nav_button_transition" />
-          </label>
-        </>
-
         <Routes>
+          <Route
+            path="/"
+            element={
+            <>
+              <nav className="header__nav_desktop">
+                <p className="header__email">{userEmail}</p>
+                <Link 
+                  to="/sign-in" 
+                  className="header__link" 
+                  onClick={onLogout}
+                >
+                  Выйти
+                </Link>
+              </nav>
+              <label className="header__nav_button">
+                <input
+                  className="header__nav_switcher"
+                  ref={btnBurger}
+                  type="checkbox"
+                  onClick={handleToggleMenu}
+                />
+                <span className="header__nav_button_transition" />
+                <span className="header__nav_button_transition" />
+                <span className="header__nav_button_transition" />
+                <span className="header__nav_button_transition" />
+              </label>
+            </>
+            }
+          />
+
           <Route
             path="/sign-in"
             element={
@@ -69,7 +75,7 @@ function Header({ userEmail, onLogout }) {
                 Регистрация
               </Link>
             }
-          />
+            />
 
           <Route
             path="/sign-up"
